@@ -4,11 +4,13 @@ import Landing from "../src/components/layout/Landing";
 import Navbar from "../src/components/layout/Navbar";
 import Login from "../src/components/auth/Login";
 import Register from "../src/components/auth/Register";
+import Dashboard from "./components/dashboard/Dashboard";
 import Alert from "../src/components/layout/Alert";
 import { loadUser } from "./actions/auth";
 import { Provider } from "react-redux";
 import setAuthToken from "../src/utils/setAuthToken";
 import store from "./store";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import "./App.css";
 
 if (localStorage.token) {
@@ -31,6 +33,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
           </section>
         </Fragment>
