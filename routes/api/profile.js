@@ -6,6 +6,7 @@ const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Posts = require("../../models/Posts");
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -141,6 +142,7 @@ router.delete("/", auth, async (req, res) => {
   try {
     // @todo - Remove users posts
 
+    await Posts.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
 
@@ -295,14 +297,14 @@ router.put(
 // @desc     Delete experience with profile
 // @access   Private
 
-router.delete("/education/:exp_id", auth, async (req, res) => {
+router.delete("/experience/:exp_id", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
     // Get remove index
-    const removeIndex = profile.education
+    const removeIndex = profile.experience
       .map(item => item.id)
       .indexOf(req.params.exp_id);
-    profile.education.splice(removeIndex, 1);
+    profile.experience.splice(removeIndex, 1);
 
     await profile.save();
 
