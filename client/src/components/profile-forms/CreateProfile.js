@@ -76,6 +76,7 @@ const CreateProfile = ({ createProfile, history }) => {
             placeholder='Company'
             name='company'
             value={company}
+            onChange={e => onChange(e)}
           />
           <small className='form-text'>
             Could be your own company or one you work for{" "}
