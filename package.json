@@ -1,5 +1,5 @@
 {
-  "name": "bookWorm",
+  "name": "book-worm",
   "version": "1.0.0",
   "description": "a social book network",
   "main": "server.js",
