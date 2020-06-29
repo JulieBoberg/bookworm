@@ -1,5 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://unicornhearts:unicorn@cluster0-00hu7.mongodb.net/test?retryWrites=true&w=majority",
+  "mongoURI":"mongodb+srv://Librarian:Unic0rnL0v3r@bookcluster-klpow.mongodb.net/<dbname>?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
   "githubClientId": "85961e7352b5f1eab455",
   "githubSecret": "32e34848ece31ce0d78c79ac37054589b48d60f0"
