@@ -160,7 +160,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: #8b0000;
+  background: #e3041c;
   color: #fff;
 }
 
@@ -308,7 +308,7 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px #8b0000;
+  border-bottom: solid 1px #e3041c;
   opacity: 0.9;
 }
 
