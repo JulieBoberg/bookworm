@@ -11,7 +11,7 @@ const CreateProfile = ({ createProfile, history }) => {
     website: "",
     locationState: "",
     locationCity: "",
-    identity: "",
+    identities: "",
     keyWords: "",
     storyGraph: "",
     bio: "",
@@ -30,7 +30,7 @@ const CreateProfile = ({ createProfile, history }) => {
     website,
     locationState,
     locationCity,
-    identity,
+    identities,
     keyWords,
     storyGraph,
     bio,
@@ -58,27 +58,11 @@ const CreateProfile = ({ createProfile, history }) => {
       </p>
 
       <form className='form' onSubmit={(e) => onSubmit(e)}>
-        {/* <div className='form-group'>
-          <select name='status' value={status} onChange={(e) => onChange(e)}>
-            <option value='0'>* Select Professional Status</option>
-            <option value='Developer'>Developer</option>
-            <option value='Junior Developer'>Junior Developer</option>
-            <option value='Senior Developer'>Senior Developer</option>
-            <option value='Manager'>Manager</option>
-            <option value='Student or Learning'>Student or Learning</option>
-            <option value='Instructor'>Instructor or Teacher</option>
-            <option value='Intern'>Intern</option>
-            <option value='Other'>Other</option>
-          </select>
-          <small className='form-text'>
-            Give us an idea of where you are at in your career
-          </small>
-        </div> */}
         <div className='form-group'>
           <input
             type='text'
             placeholder='Name'
-            name='name'
+            name='publicName'
             value={publicName}
             onChange={(e) => onChange(e)}
           />
@@ -100,8 +84,8 @@ const CreateProfile = ({ createProfile, history }) => {
           <input
             type='text'
             placeholder='I identify as...'
-            name='identity'
-            value={identity}
+            name='identities'
+            value={identities}
             onChange={(e) => onChange(e)}
           />
           <small className='form-text'>
@@ -130,7 +114,7 @@ const CreateProfile = ({ createProfile, history }) => {
           <input
             type='text'
             placeholder='State'
-            name='location'
+            name='locationState'
             value={locationState}
             onChange={(e) => onChange(e)}
           />
@@ -141,7 +125,7 @@ const CreateProfile = ({ createProfile, history }) => {
           <input
             type='text'
             placeholder='City'
-            name='location'
+            name='locationCity'
             value={locationCity}
             onChange={(e) => onChange(e)}
           />
@@ -168,7 +152,7 @@ const CreateProfile = ({ createProfile, history }) => {
           <input
             type='text'
             placeholder='StoryGraph or Good Reads link'
-            name='storygraph'
+            name='storyGraph'
             value={storyGraph}
             onChange={(e) => onChange(e)}
           />
@@ -249,18 +233,6 @@ const CreateProfile = ({ createProfile, history }) => {
                 onChange={(e) => onChange(e)}
               />
             </div>
-
-            {/* Remove Linkedin */}
-            {/* <div className='form-group social-input'>
-              <i className='fab fa-linkedin fa-2x'></i>
-              <input
-                type='text'
-                placeholder='Linkedin URL'
-                name='linkedin'
-                value={linkedin}
-                onChange={(e) => onChange(e)}
-              />
-            </div> */}
           </Fragment>
         )}
 

@@ -33,66 +33,64 @@ router.get("/me", auth, async (req, res) => {
 // @desc     Create or update user profile
 // @access   Private
 
-router.post(
-  "/",
-  [
-    auth,
-    [
-      check("status", "Status is required").not().isEmpty(),
-      check("skills", "Skills are required").not().isEmpty(),
-    ],
-  ],
-  async (req, res) => {
-    const errrors = validationResult(req);
-    if (!errrors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    const {
-      company,
-      website,
-      location,
-      bio,
-      status,
-      githubusername,
-      skills,
-      youtube,
-      facebook,
-      twitter,
-      instagram,
-      linkedin,
-    } = req.body;
-
-    //Build Profile Object
-    const profileFields = {};
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(",").map((skill) => skill.trim());
-    }
-    profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (instagram) profileFields.social.instagram = instagram;
-
-    try {
-      let profile = await Profile.findOneAndUpdate(
-        { user: req.user.id },
-        { $set: profileFields },
-        { new: true, upsert: true }
-      );
-      res.json(profile);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
+router.post("/", [auth], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+  const {
+    publicName,
+    brandName,
+    website,
+    locationState,
+    locationCity,
+    identities,
+    keyWords,
+    storyGraph,
+    bio,
+    twitter,
+    facebook,
+    youtube,
+    instagram,
+    blog,
+  } = req.body;
+
+  //Build Profile Object
+  const profileFields = {};
+  if (publicName) profileFields.publicName = publicName;
+  if (brandName) profileFields.brandName = brandName;
+  if (website) profileFields.website = website;
+  if (locationState) profileFields.locationState = locationState;
+  if (locationCity) profileFields.locationCity = locationCity;
+  if (storyGraph) profileFields.storyGraph = storyGraph;
+  if (bio) profileFields.bio = bio;
+  if (identities) {
+    profileFields.identities = identities
+      .split(",")
+      .map((identity) => identity.trim());
+  }
+  if (keyWords) {
+    profileFields.keyWords = keyWords.split(",").map((word) => word.trim());
+  }
+  profileFields.social = {};
+  if (youtube) profileFields.social.youtube = youtube;
+  if (twitter) profileFields.social.twitter = twitter;
+  if (facebook) profileFields.social.facebook = facebook;
+  if (blog) profileFields.social.blog = blog;
+  if (instagram) profileFields.social.instagram = instagram;
+
+  try {
+    let profile = await Profile.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: profileFields },
+      { new: true, upsert: true }
+    );
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route    GET api/profile
 // @desc     Get all profiles

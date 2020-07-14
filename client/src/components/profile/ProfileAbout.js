@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const ProfileAbout = ({
   profile: {
     bio,
-    skills,
-    user: { name }
-  }
+    identities,
+    user: { name },
+  },
 }) => {
   return (
     <div class='profile-about bg-light p-2'>
@@ -17,11 +17,11 @@ const ProfileAbout = ({
           <div class='line'></div>
         </Fragment>
       )}
-      <h2 class='text-primary'>Skill Set</h2>
+      <h2 class='text-primary'>I identity as </h2>
       <div class='skills'>
-        {skills.map((skill, index) => (
-          <div key={index} className='p-1'>
-            <i className='fas fa-check' /> {skill}
+        {identities.map((identity, index) => (
+          <div key={index}>
+            <span class='badge badge-pill badge-danger'>{identity}</span>
           </div>
         ))}
       </div>
@@ -30,7 +30,7 @@ const ProfileAbout = ({
 };
 
 ProfileAbout.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileAbout;

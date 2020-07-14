@@ -4,112 +4,60 @@ const Schema = mongoose.Schema;
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
+    ref: "user",
   },
-  company: {
-    type: String
+  publicName: {
+    type: String,
+  },
+  brandName: {
+    type: String,
   },
   website: {
-    type: String
-  },
-  location: {
-    type: String
-  },
-  status: {
     type: String,
-    required: true
   },
-  skills: {
+  locationState: {
+    type: String,
+  },
+  locationCity: {
+    type: String,
+  },
+
+  identities: {
     type: [String],
-    required: true
+    required: true,
+  },
+  keyWords: {
+    type: [String],
+    required: true,
   },
   bio: {
-    type: String
+    type: String,
   },
-  githubusername: {
-    type: String
+  storyGraph: {
+    type: String,
   },
-  experience: [
-    {
-      title: {
-        type: String,
-        required: true
-      },
-      company: {
-        type: String,
-        required: true
-      },
-      location: {
-        type: String
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
-    }
-  ],
-  education: [
-    {
-      school: {
-        type: String,
-        require: true
-      },
-      degree: {
-        type: String,
-        required: true
-      },
-      fieldofstudy: {
-        type: String,
-        required: true
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date,
-        require: true
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
-    }
-  ],
+
   social: {
     youtube: {
-      type: String
+      type: String,
     },
     twitter: {
-      type: String
+      type: String,
     },
     facebook: {
-      type: String
+      type: String,
     },
-    linkedin: {
-      type: String
+    blog: {
+      type: String,
     },
     instagram: {
-      type: String
-    }
+      type: String,
+    },
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
