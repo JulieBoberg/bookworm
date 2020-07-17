@@ -148,6 +148,19 @@ img {
   color: #333;
 }
 
+.badge-pill {
+  background-color: #e3041c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
 .alert {
   padding: 0.8rem;
   margin: 1rem 0;
@@ -156,8 +169,18 @@ img {
   color: #333;
 }
 
+/* .bg-primary {
+  background: white;
+  color: black;
+  border: 1px solid black;
+} */
+.bg-primary {
+  width: 100%;
+  background: #e3041c;
+  color: #fff;
+}
+
 .btn-primary,
-.bg-primary,
 .badge-primary,
 .alert-primary {
   background: #e3041c;
@@ -378,6 +401,7 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: #f4f4f4;
 }
 
 .profile-top img {
