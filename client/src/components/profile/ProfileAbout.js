@@ -23,14 +23,14 @@ const ProfileAbout = ({
         <Fragment>
           <h2 class='text-primary'>Primary</h2>
           <p>
-            The place I'm most active online is<span>{website}</span>{" "}
+            The place I'm most active online is<span> {website}</span>{" "}
           </p>
         </Fragment>
       )}
 
       <div className='icons my-1'>
-        {blog && (
-          <a href={blog} target='_blank' rel='noopener noreferrer'>
+        {social && social.blog && (
+          <a href={social.blog} target='_blank' rel='noopener noreferrer'>
             <i className='fas fa-globe fa-2x'></i>
           </a>
         )}
