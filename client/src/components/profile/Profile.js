@@ -6,6 +6,7 @@ import { getProfileById } from "../../actions/profile";
 import PropTypes from "prop-types";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
+import ProfileSide from "./ProfileSide";
 
 const Profile = ({
   match,
@@ -35,7 +36,14 @@ const Profile = ({
             )}
           <div className='profile-grid my-1'>
             <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
+
+            <div className='profile-exp bg-white p-2'>
+              <ProfileAbout profile={profile} />
+            </div>
+
+            <div className='profile-edu bg-white p-2'>
+              <ProfileSide profile={profile} />
+            </div>
           </div>
         </Fragment>
       )}

@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 const ProfileAbout = ({
   profile: {
     bio,
-    identities,
-    keyWords,
+    social,
+    website,
+
     user: { name },
   },
 }) => {
   return (
-    <div class='profile-about bg-light p-2'>
+    <div class='profile-exp  p-2'>
       {bio && (
         <Fragment>
           <h2 class='text-primary'>{name.trim().split(" ")[0]}'s Bio</h2>
@@ -18,25 +19,44 @@ const ProfileAbout = ({
           <div class='line'></div>
         </Fragment>
       )}
-      <h2 class='text-primary'>I identity as </h2>
-      <div class='skills'>
-        {identities.map((identity, index) => (
-          <div key={index}>
-            <span class='badge badge-pill badge-danger'>{identity}</span>
-          </div>
-        ))}
-      </div>
+      {website && (
+        <Fragment>
+          <h2 class='text-primary'>Primary</h2>
+          <p>
+            The place I'm most active online is<span>{website}</span>{" "}
+          </p>
+        </Fragment>
+      )}
 
-      {/*  */}
-      <div class='line'></div>
+      <div className='icons my-1'>
+        {blog && (
+          <a href={blog} target='_blank' rel='noopener noreferrer'>
+            <i className='fas fa-globe fa-2x'></i>
+          </a>
+        )}
 
-      <h2 class='text-primary'>My keywords</h2>
-      <div class='skills'>
-        {keyWords.map((words, index) => (
-          <div key={index}>
-            <span class='badge badge-pill badge-danger'>{words}</span>
-          </div>
-        ))}
+        {social && social.twitter && (
+          <a href={social.twitter} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-twitter fa-2x'></i>
+          </a>
+        )}
+
+        {social && social.facebook && (
+          <a href={social.facebook} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-facebook fa-2x'></i>
+          </a>
+        )}
+
+        {social && social.youtube && (
+          <a href={social.youtube} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-youtube fa-2x'></i>
+          </a>
+        )}
+        {social && social.instagram && (
+          <a href={social.instagram} target='_blank' rel='noopener noreferrer'>
+            <i className='fab fa-instagram fa-2x'></i>
+          </a>
+        )}
       </div>
     </div>
   );
