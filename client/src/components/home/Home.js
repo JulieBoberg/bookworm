@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Books from "./Books";
+import HomeIdentities from "./HomeIdentities";
+import KeyWords from "./KeyWords";
+import { getProfiles } from "../../actions/profile";
 
-const Home = () => {
+const Home = ({ getProfiles, profile: { profiles, loading } }) => {
+  useEffect(() => {
+    getProfiles();
+  }, [getProfiles]);
+
   return (
     <div>
       {/* Start off with a greeting in a small background area at the top */}
@@ -21,8 +30,31 @@ const Home = () => {
       <div class='bg-primary p'>
         <h3>Find Own Voices Reviewers</h3>
       </div>
+      {/*Hopefully this is identities */}
+      <div className='profiles my-1'>
+        {profiles.length > 0 ? (
+          profiles.map((profile) => (
+            <HomeIdentities key={profile._id} profile={profile} />
+          ))
+        ) : (
+          <h4>No profiles found...</h4>
+        )}
+      </div>
+
+      {/*  */}
+
       <div class='bg-primary p'>
         <h3>Find by Key Words</h3>
+      </div>
+
+      <div className='profiles my-1'>
+        {profiles.length > 0 ? (
+          profiles.map((profile) => (
+            <KeyWords key={profile._id} profile={profile} />
+          ))
+        ) : (
+          <h4>No profiles found...</h4>
+        )}
       </div>
       {/* A contribute button */}
 
@@ -31,4 +63,13 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+Home.propTypes = {
+  getProfiles: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, { getProfiles })(Home);

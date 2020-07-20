@@ -16,9 +16,10 @@ const ProfileItem = ({
       <img src={avatar} alt='' className='round-img' />
       <div>
         <h2>{name}</h2>
-        <p>
-          {brandName} {locationState && <span> at {locationState}</span>}
-          {locationCity}
+        <p className='my-1'>
+          {brandName && <span>{brandName} in </span>}
+          {locationCity && <span>{locationCity}, </span>}
+          {locationState && <span> {locationState}</span>}
         </p>
 
         <Link to={`/profile/${_id}`} className='btn btn-primary'>
@@ -28,7 +29,7 @@ const ProfileItem = ({
       <ul>
         {identities.slice(0, 4).map((identity, index) => (
           <li key={index} className='text-primary'>
-            <i className='fas fa-check' /> {identity}
+            <span class='badge badge-pill badge-danger'>{identity}</span>
           </li>
         ))}
       </ul>
