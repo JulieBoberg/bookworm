@@ -107,6 +107,23 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Holy shit I hope this works and really I have no idea where this connects to SOOOOOOOOOOOOOO......
+
+// @route    GET api/profile
+// @desc     Get identities from all profiles
+// @access   Public
+
+router.get("/ident", async (req, res) => {
+  try {
+    const profilesIdentities = await Profile.distinct("identities");
+
+    res.json(profilesIdentities);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    GET api/profile/user/:user_id
 // @desc     Get profile by user id
 // @access   Public

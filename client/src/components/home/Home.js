@@ -2,14 +2,19 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Books from "./Books";
-import HomeIdentities from "./HomeIdentities";
+// import HomeIdentities from "./HomeIdentities";
 import KeyWords from "./KeyWords";
-import { getProfiles } from "../../actions/profile";
+import { getAllIdentities } from "../../actions/profile";
 
-const Home = ({ getProfiles, profile: { profiles, loading } }) => {
+// SOmething needs to be imported in profiles i think
+
+const Home = ({
+  getAllIdentities,
+  profile: { profiles, profilesIdentities, loading },
+}) => {
   useEffect(() => {
-    getProfiles();
-  }, [getProfiles]);
+    getAllIdentities();
+  }, [getAllIdentities]);
 
   return (
     <div>
@@ -32,9 +37,9 @@ const Home = ({ getProfiles, profile: { profiles, loading } }) => {
       </div>
       {/*Hopefully this is identities */}
       <div className='profiles my-1'>
-        {profiles.length > 0 ? (
-          profiles.map((profile) => (
-            <HomeIdentities key={profile._id} profile={profile} />
+        {profilesIdentities.length > 0 ? (
+          profilesIdentities.map((identity) => (
+            <div class='badge badge-pill badge-danger'>{identity}</div>
           ))
         ) : (
           <h4>No profiles found...</h4>
@@ -68,8 +73,8 @@ const mapStateToProps = (state) => ({
 });
 
 Home.propTypes = {
-  getProfiles: PropTypes.func.isRequired,
+  getAllIdentities: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getProfiles })(Home);
+export default connect(mapStateToProps, { getAllIdentities })(Home);

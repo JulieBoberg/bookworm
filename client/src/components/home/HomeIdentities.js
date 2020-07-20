@@ -11,8 +11,9 @@ const HomeIdentities = ({
   return (
     <div>
       <ul>
-        {identities.map((identity, index) => (
+        {identities.map((identity, index) => ( 
           <li key={index} className='text-primary'>
+          
             <span class='badge badge-pill badge-danger'>{identity}</span>
           </li>
         ))}

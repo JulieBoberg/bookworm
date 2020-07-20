@@ -8,6 +8,7 @@ import {
   CLEAR_PROFILE,
   DELETE_ACCOUNT,
   GET_REPOS,
+  ALL_IDENTITIES,
 } from "./types";
 
 // Get All Profiles
@@ -20,6 +21,26 @@ export const getProfiles = () => async (dispatch) => {
 
     dispatch({
       type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get All identities
+
+export const getAllIdentities = () => async (dispatch) => {
+  // dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get("/api/profile/ident");
+
+    dispatch({
+      type: ALL_IDENTITIES,
       payload: res.data,
     });
   } catch (err) {
