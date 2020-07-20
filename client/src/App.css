@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
+  --primary-color: #e3041c;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -370,6 +370,44 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+/* Home Page */
+.home {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Home Page Grid */
+.home-grid {
+  display: grid;
+  grid-template-areas:
+    "book book book book book"
+    "identities"
+    "genres"
+    "keywords";
+  grid-gap: 1rem;
+}
+
+/* Books Row */
+.book-row {
+  grid-area: book;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f4f4f4;
+}
+
+/* Add a media query */
+.book-row img {
+  width: 200px;
+  padding: 1rem;
 }
 
 /* Profiles Page */

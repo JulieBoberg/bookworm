@@ -28,13 +28,14 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-         
 
+          {/*  I'll add this feature back in later. 
           <div className='my-2'>
             <button onClick={() => deleteAccount()} className='btn btn-danger'>
-              <i className='fas fa-user-minus'></i>Delete Account
+              <i className='fas fa-user'></i>Delete Account
             </button>
-          </div>
+          </div> */}
+          
         </Fragment>
       ) : (
         <Fragment>

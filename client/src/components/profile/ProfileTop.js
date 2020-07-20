@@ -29,8 +29,6 @@ const ProfileTop = ({
           {locationCity && <span> {locationCity}</span>}
           {locationState && <span>, {locationState}</span>}
         </p>
-
-        
       </div>
     </div>
   );
