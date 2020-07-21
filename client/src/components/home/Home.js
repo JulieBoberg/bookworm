@@ -3,18 +3,20 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Books from "./Books";
 // import HomeIdentities from "./HomeIdentities";
-import KeyWords from "./KeyWords";
-import { getAllIdentities } from "../../actions/profile";
+// import KeyWords from "./KeyWords";
+import { getAllIdentities, getAllKeyWords } from "../../actions/profile";
 
 // SOmething needs to be imported in profiles i think
 
 const Home = ({
   getAllIdentities,
-  profile: { profiles, profilesIdentities, loading },
+  getAllKeyWords,
+  profile: { profiles, profilesIdentities, profilesKeyWords, loading },
 }) => {
   useEffect(() => {
     getAllIdentities();
-  }, [getAllIdentities]);
+    getAllKeyWords();
+  }, [getAllIdentities, getAllKeyWords]);
 
   return (
     <div>
@@ -29,9 +31,12 @@ const Home = ({
       <div class='bg-primary p'>
         <h3>What Users are Buzzing About</h3>
       </div>
-      <div className='home-grid my-1'>
+      <div className='home-grid '>
         <Books />
       </div>
+      {/* <small className='form-text'>
+        Buying books through these links supports this project!
+      </small> */}
       <div class='bg-primary p'>
         <h3>Find Own Voices Reviewers</h3>
       </div>
@@ -53,9 +58,9 @@ const Home = ({
       </div>
 
       <div className='profiles my-1'>
-        {profiles.length > 0 ? (
-          profiles.map((profile) => (
-            <KeyWords key={profile._id} profile={profile} />
+        {profilesKeyWords.length > 0 ? (
+          profilesKeyWords.map((words) => (
+            <div class='badge badge-pill badge-danger'>{words}</div>
           ))
         ) : (
           <h4>No profiles found...</h4>
@@ -74,7 +79,10 @@ const mapStateToProps = (state) => ({
 
 Home.propTypes = {
   getAllIdentities: PropTypes.func.isRequired,
+  getAllKeyWords: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getAllIdentities })(Home);
+export default connect(mapStateToProps, { getAllIdentities, getAllKeyWords })(
+  Home
+);

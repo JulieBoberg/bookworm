@@ -9,6 +9,7 @@ import {
   DELETE_ACCOUNT,
   GET_REPOS,
   ALL_IDENTITIES,
+  ALL_KEYWORDS,
 } from "./types";
 
 // Get All Profiles
@@ -41,6 +42,26 @@ export const getAllIdentities = () => async (dispatch) => {
 
     dispatch({
       type: ALL_IDENTITIES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get All KeyWords
+
+export const getAllKeyWords = () => async (dispatch) => {
+  // dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get("/api/profile/key");
+
+    dispatch({
+      type: ALL_KEYWORDS,
       payload: res.data,
     });
   } catch (err) {

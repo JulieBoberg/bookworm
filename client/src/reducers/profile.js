@@ -6,12 +6,14 @@ import {
   GET_PROFILES,
   GET_REPOS,
   ALL_IDENTITIES,
+  ALL_KEYWORDS,
 } from "../actions/types";
 
 const initialState = {
   profile: null,
   profiles: [],
   profilesIdentities: [],
+  profilesKeyWords: [],
   repos: [],
   loading: true,
   error: {},
@@ -38,6 +40,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profilesIdentities: payload,
+        loading: false,
+      };
+    case ALL_KEYWORDS:
+      return {
+        ...state,
+        profilesKeyWords: payload,
         loading: false,
       };
     case PROFILE_ERROR:

@@ -109,7 +109,7 @@ router.get("/", async (req, res) => {
 
 // Holy shit I hope this works and really I have no idea where this connects to SOOOOOOOOOOOOOO......
 
-// @route    GET api/profile
+// @route    GET api/profile/ident
 // @desc     Get identities from all profiles
 // @access   Public
 
@@ -123,6 +123,32 @@ router.get("/ident", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+
+// @route    GET api/profile/key
+// @desc     Get identities from all profiles
+// @access   Public
+
+router.get("/key", async (req, res) => {
+  try {
+    const profilesKeyWords = await Profile.distinct("keyWords");
+
+    res.json(profilesKeyWords);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 // @route    GET api/profile/user/:user_id
 // @desc     Get profile by user id
