@@ -6,7 +6,7 @@ import Books from "./Books";
 // import KeyWords from "./KeyWords";
 import { getAllIdentities, getAllKeyWords } from "../../actions/profile";
 
-// SOmething needs to be imported in profiles i think
+
 
 const Home = ({
   getAllIdentities,

@@ -7,22 +7,22 @@ import { login } from "../../actions/auth";
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const { email, password } = formData;
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     login(email, password);
   };
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   // Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/home' />;
   }
 
   return (
@@ -31,13 +31,13 @@ const Login = ({ login, isAuthenticated }) => {
       <p className='lead'>
         <i className='fas fa-user'></i>Sign Into Your Account
       </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='email'
             placeholder='Email Address'
             value={email}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             name='email'
           />
         </div>
@@ -48,7 +48,7 @@ const Login = ({ login, isAuthenticated }) => {
             placeholder='Password'
             name='password'
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             minLength='4'
           />
         </div>
@@ -62,12 +62,12 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 export default connect(mapStateToProps, { login })(Login);

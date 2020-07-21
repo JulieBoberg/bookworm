@@ -395,7 +395,7 @@ button {
 
 /* Books Row */
 .book-row {
-  grid-area: book;
+  /* grid-area: book; */
   display: flex;
   flex-direction: row;
   align-items: center;

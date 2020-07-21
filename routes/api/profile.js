@@ -142,14 +142,6 @@ router.get("/key", async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
 // @route    GET api/profile/user/:user_id
 // @desc     Get profile by user id
 // @access   Public
