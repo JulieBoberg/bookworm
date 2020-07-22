@@ -1,22 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Books from "./Books";
+import SearchProfiles from "../search/SearchProfiles";
 // import HomeIdentities from "./HomeIdentities";
 // import KeyWords from "./KeyWords";
-import { getAllIdentities, getAllKeyWords } from "../../actions/profile";
-
-
+import {
+  getProfiles,
+  getAllIdentities,
+  getAllKeyWords,
+} from "../../actions/profile";
 
 const Home = ({
+  getProfiles,
   getAllIdentities,
   getAllKeyWords,
   profile: { profiles, profilesIdentities, profilesKeyWords, loading },
 }) => {
   useEffect(() => {
+    getProfiles();
     getAllIdentities();
     getAllKeyWords();
-  }, [getAllIdentities, getAllKeyWords]);
+  }, [getProfiles, getAllIdentities, getAllKeyWords]);
+
+  const [search, setSearch] = useState("");
+  //   const [filter, setFilter] = useState([]);
 
   return (
     <div>
@@ -28,7 +36,7 @@ const Home = ({
       </div>
 
       {/* Next is a selection of books people are talking about */}
-      <div class='bg-primary p'>
+      <div className='bg-primary p'>
         <h3>What Users are Buzzing About</h3>
       </div>
       <div className='home-grid '>
@@ -37,30 +45,43 @@ const Home = ({
       {/* <small className='form-text'>
         Buying books through these links supports this project!
       </small> */}
-      <div class='bg-primary p'>
+      <div className='bg-primary p'>
         <h3>Find Own Voices Reviewers</h3>
       </div>
       {/*Hopefully this is identities */}
+
       <div className='profiles my-1'>
         {profilesIdentities.length > 0 ? (
-          profilesIdentities.map((identity) => (
-            <div class='badge badge-pill badge-danger'>{identity}</div>
+          profilesIdentities.map((identity, index) => (
+            <button key={index} onClick={() => setSearch(identity)}>
+              <div className='badge badge-pill badge-danger'>{identity}</div>
+            </button>
           ))
         ) : (
           <h4>No profiles found...</h4>
         )}
       </div>
 
-      {/*  */}
+      <div>
+        {search.length > 0 ? (
+          profiles
+            .filter((person) => person.identities.includes(search))
+            .map((profile) => (
+              <SearchProfiles key={profile._id} profile={profile} />
+            ))
+        ) : (
+          <h4>Click to search</h4>
+        )}
+      </div>
 
-      <div class='bg-primary p'>
+      <div className='bg-primary p'>
         <h3>Find by Key Words</h3>
       </div>
 
       <div className='profiles my-1'>
         {profilesKeyWords.length > 0 ? (
           profilesKeyWords.map((words) => (
-            <div class='badge badge-pill badge-danger'>{words}</div>
+            <div className='badge badge-pill badge-danger'>{words}</div>
           ))
         ) : (
           <h4>No profiles found...</h4>
@@ -78,11 +99,14 @@ const mapStateToProps = (state) => ({
 });
 
 Home.propTypes = {
+  getProfiles: PropTypes.func.isRequired,
   getAllIdentities: PropTypes.func.isRequired,
   getAllKeyWords: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getAllIdentities, getAllKeyWords })(
-  Home
-);
+export default connect(mapStateToProps, {
+  getProfiles,
+  getAllIdentities,
+  getAllKeyWords,
+})(Home);
