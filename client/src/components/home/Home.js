@@ -80,11 +80,25 @@ const Home = ({
 
       <div className='profiles my-1'>
         {profilesKeyWords.length > 0 ? (
-          profilesKeyWords.map((words) => (
-            <div className='badge badge-pill badge-danger'>{words}</div>
+          profilesKeyWords.map((words, index) => (
+            <button key={index} onClick={() => setSearch(words)}>
+              <div className='badge badge-pill badge-danger'>{words}</div>
+            </button>
           ))
         ) : (
           <h4>No profiles found...</h4>
+        )}
+      </div>
+
+      <div>
+        {search.length > 0 ? (
+          profiles
+            .filter((person) => person.keyWords.includes(search))
+            .map((profile) => (
+              <SearchProfiles key={profile._id} profile={profile} />
+            ))
+        ) : (
+          <h4>Click to search</h4>
         )}
       </div>
       {/* A contribute button */}
