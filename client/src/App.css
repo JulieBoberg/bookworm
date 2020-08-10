@@ -257,8 +257,8 @@ img {
 }
 
 .line {
-  height: 1px;
-  background: #ccc;
+  height: 0.2px;
+  /* background: #ccc; */
   margin: 1.5rem 0;
 }
 
@@ -423,6 +423,15 @@ button {
 .book-row img {
   width: 200px;
   padding: 1rem;
+}
+
+.book-col {
+  display: flex;
+  flex-direction: column;
+
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
 }
 
 /* Profiles Page */
@@ -637,7 +646,13 @@ button {
   .profile-about .skills {
     flex-direction: column;
   }
+  .book-buttons {
+    display: block;
+    width: 80%;
 
+    margin: 1em;
+    /* margin-bottom: 0.2rem; */
+  }
   .dash-buttons a {
     display: block;
     width: 100%;

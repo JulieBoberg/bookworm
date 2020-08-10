@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const ProfileAbout = ({
   profile: {
     bio,
+    genre,
     social,
     website,
 
@@ -19,9 +20,26 @@ const ProfileAbout = ({
           <div class='line'></div>
         </Fragment>
       )}
+
+      {genre && (
+        <Fragment>
+          <h2 class='text-primary'>I like to read</h2>
+          <div>
+            {genre.map((g, index) => (
+              <div key={index}>
+                <span class='badge badge-pill badge-dark'>{g}</span>
+              </div>
+            ))}
+          </div>
+        </Fragment>
+      )}
+
       {website && (
         <Fragment>
           <h2 class='text-primary'>Primary</h2>
+
+          {/* Make this a clickable link */}
+
           <p>
             The place I'm most active online is<span> {website}</span>{" "}
           </p>
