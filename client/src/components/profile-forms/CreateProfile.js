@@ -11,6 +11,7 @@ const CreateProfile = ({ createProfile, history }) => {
     website: "",
     locationState: "",
     locationCity: "",
+    genre:"",
     identities: "",
     keyWords: "",
     storyGraph: "",
@@ -31,6 +32,7 @@ const CreateProfile = ({ createProfile, history }) => {
     locationState,
     locationCity,
     identities,
+    genre,
     keyWords,
     storyGraph,
     bio,
@@ -131,6 +133,29 @@ const CreateProfile = ({ createProfile, history }) => {
           />
           <small className='form-text'>City (eg. San Francisco)</small>
         </div>
+
+
+{/* Genre addition */}
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='What genres do you review?'
+            name='genre'
+            value={genre}
+            onChange={(e) => onChange(e)}
+          />
+          <small className='form-text'>
+            Please use comma separated values (eg. fiction, fantasy, young adult,
+            middle grade)
+          </small>
+        </div>
+
+
+
+
+
+
+
 
         <div className='form-group'>
           <input

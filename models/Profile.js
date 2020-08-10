@@ -21,7 +21,10 @@ const ProfileSchema = new mongoose.Schema({
   locationCity: {
     type: String,
   },
-
+  genre: {
+    type: [String],
+    required: true,
+  },
   identities: {
     type: [String],
     required: true,

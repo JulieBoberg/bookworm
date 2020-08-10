@@ -44,6 +44,7 @@ router.post("/", [auth], async (req, res) => {
     website,
     locationState,
     locationCity,
+    genre,
     identities,
     keyWords,
     storyGraph,
@@ -68,6 +69,9 @@ router.post("/", [auth], async (req, res) => {
     profileFields.identities = identities
       .split(",")
       .map((identity) => identity.trim());
+  }
+  if (genre) {
+    profileFields.genre = genre.split(",").map((g) => g.trim());
   }
   if (keyWords) {
     profileFields.keyWords = keyWords.split(",").map((word) => word.trim());
@@ -106,8 +110,6 @@ router.get("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
-// Holy shit I hope this works and really I have no idea where this connects to SOOOOOOOOOOOOOO......
 
 // @route    GET api/profile/ident
 // @desc     Get identities from all profiles

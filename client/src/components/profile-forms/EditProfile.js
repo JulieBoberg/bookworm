@@ -16,6 +16,7 @@ const EditProfile = ({
     website: "",
     locationState: "",
     locationCity: "",
+    genre: "",
     identities: "",
     keyWords: "",
     storyGraph: "",
@@ -33,6 +34,7 @@ const EditProfile = ({
     website,
     locationState,
     locationCity,
+    genre,
     identities,
     keyWords,
     storyGraph,
@@ -58,6 +60,8 @@ const EditProfile = ({
       locationCity:
         loading || !profile.locationCity ? "" : profile.locationCity,
       storyGraph: loading || !profile.storyGraph ? "" : profile.storyGraph,
+
+      genre: loading || !profile.genre ? "" : profile.genre.join(","),
 
       identities:
         loading || !profile.identities ? "" : profile.identities.join(","),
@@ -162,6 +166,22 @@ const EditProfile = ({
           />
           <small className='form-text'>City (eg. San Francisco)</small>
         </div>
+
+        {/* Genre addition */}
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='What genres do you review?'
+            name='genre'
+            value={genre}
+            onChange={(e) => onChange(e)}
+          />
+          <small className='form-text'>
+            Please use comma separated values (eg. fiction, fantasy, young
+            adult, middle grade)
+          </small>
+        </div>
+        {/* End Genre addition */}
 
         <div className='form-group'>
           <input
