@@ -141,6 +141,7 @@ img {
 
 .badge {
   font-size: 0.8rem;
+  border: none;
   padding: 0.1rem;
   text-align: center;
   margin: 0.3rem;
@@ -158,6 +159,20 @@ img {
   display: inline-block;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 16px;
+}
+
+.badge-pill:active {
+  background-color: black;
+}
+
+.badge-pill:visited {
+  background-color: black;
+}
+
+.badge-pill:focused {
+  background-color: black;
+  border: none;
   border-radius: 16px;
 }
 

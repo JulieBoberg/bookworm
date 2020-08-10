@@ -14,7 +14,8 @@ const Landing = ({ isAuthenticated }) => {
         <div className='landing-inner'>
           <h1 className='x-large'>Book Worm </h1>
           <p className='lead'>
-            Create a book profile, create bookshelves, and talk with other book lovers.
+            An book influencer discovery engine. Find own voices book reviewers,
+            curious niches, and ultimately your best book community.
           </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
@@ -31,11 +32,11 @@ const Landing = ({ isAuthenticated }) => {
 };
 
 Landing.propTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Landing);

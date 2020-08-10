@@ -53,8 +53,12 @@ const Home = ({
       <div className='profiles my-1'>
         {profilesIdentities.length > 0 ? (
           profilesIdentities.map((identity, index) => (
-            <button key={index} onClick={() => setSearch(identity)}>
-              <div className='badge badge-pill badge-danger'>{identity}</div>
+            <button
+              className='badge badge-pill badge-danger'
+              key={index}
+              onClick={() => setSearch(identity)}
+            >
+              <div>{identity}</div>
             </button>
           ))
         ) : (
@@ -81,8 +85,12 @@ const Home = ({
       <div className='profiles my-1'>
         {profilesKeyWords.length > 0 ? (
           profilesKeyWords.map((words, index) => (
-            <button key={index} onClick={() => setSearch(words)}>
-              <div className='badge badge-pill badge-danger'>{words}</div>
+            <button
+              className='badge badge-pill badge-danger'
+              key={index}
+              onClick={() => setSearch(words)}
+            >
+              <div>{words}</div>
             </button>
           ))
         ) : (
