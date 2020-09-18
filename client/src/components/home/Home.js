@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Books from "./Books";
 import SearchProfiles from "../search/SearchProfiles";
-// import HomeIdentities from "./HomeIdentities";
-// import KeyWords from "./KeyWords";
+
 import {
   getProfiles,
   getAllIdentities,
@@ -24,7 +23,7 @@ const Home = ({
   }, [getProfiles, getAllIdentities, getAllKeyWords]);
 
   const [search, setSearch] = useState("");
-  //   const [filter, setFilter] = useState([]);
+
 
   return (
     <div>
