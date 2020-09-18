@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Librarian:Unic0rnL0v3r@bookcluster-klpow.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
