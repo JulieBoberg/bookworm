@@ -31,7 +31,7 @@ const Home = ({
       <div
         style={{ fontSize: "2em", textAlign: "center", paddingBottom: "1rem" }}
       >
-        <h3>Welcome to BookWorm!</h3>
+        <h3>Welcome to Book Worm!</h3>
       </div>
 
       {/* Next is a selection of books people are talking about */}
