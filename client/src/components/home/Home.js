@@ -27,27 +27,25 @@ const Home = ({
 
   return (
     <div>
-      {/* Start off with a greeting in a small background area at the top */}
+    
       <div
         style={{ fontSize: "2em", textAlign: "center", paddingBottom: "1rem" }}
       >
         <h3>Welcome to Book Worm!</h3>
       </div>
 
-      {/* Next is a selection of books people are talking about */}
       <div className='bg-primary p'>
         <h3>What Users are Buzzing About</h3>
       </div>
       <div className='home-grid '>
         <Books />
       </div>
-      {/* <small className='form-text'>
-        Buying books through these links supports this project!
-      </small> */}
+      
       <div className='bg-primary p'>
         <h3>Find Own Voices Reviewers</h3>
       </div>
-      {/*Hopefully this is identities */}
+
+      {/*identities */}
 
       <div className='profiles my-1'>
         {profilesIdentities.length > 0 ? (
@@ -76,6 +74,8 @@ const Home = ({
           <h4>Click to search</h4>
         )}
       </div>
+
+      {/* Keywords */}
 
       <div className='bg-primary p'>
         <h3>Find by Key Words</h3>
@@ -108,9 +108,9 @@ const Home = ({
           <h4>Click to search</h4>
         )}
       </div>
-      {/* A contribute button */}
+    
 
-      {/* Then I break it down by identities, keywords, location, and genre with word clouds that have search functionality.  */}
+      {/* I want to eventually break this down by identities, keywords, location, and book genre preferences with word clouds that have search functionality.  */}
     </div>
   );
 };

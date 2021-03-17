@@ -1,13 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
-// import { getProfiles } from "../../actions/profile";
-// import ProfileItem from "./ProfileItem";
 import PropTypes from "prop-types";
 import SearchProfiles from "./SearchProfiles";
 
 
-// I'll need to change out the action. 
+
 
 const SearchIdentities = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
